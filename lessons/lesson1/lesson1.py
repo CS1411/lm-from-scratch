@@ -17,3 +17,25 @@ if __name__ == "__main__":
         assert abs(sum(p.values()) - 1) < 1e-9  # a distribution sums to 1
     best = max(next_word_probs("the").items(), key=lambda kv: kv[1])[0]
     print("suggest after 'the':", best)
+
+# --- Lesson text: hand-made table + suggest() ---
+next_word = {
+    "the": {"morning": 0.30, "train": 0.20, "park": 0.15, "city": 0.10, "weekend": 0.08},
+    "good": {"book": 0.5, "coffee": 0.5},
+}
+
+def suggest(context, table, k=3):
+    ranked = sorted(table.get(context, {}).items(), key=lambda kv: -kv[1])
+    return ranked[:k]
+
+if __name__ == "__main__":
+    print("after 'the' :", suggest("the", next_word))
+    print("after 'good':", suggest("good", next_word))
+    assert suggest("the", next_word)[0] == ("morning", 0.3)
+
+    # chain rule + bigram (Markov) shortcut: P(sentence) = prod P(w_i | w_{i-1})
+    p = 1.0
+    sent = "the cat sat on the mat".split()
+    for a, b in zip(sent, sent[1:]):
+        p *= next_word_probs(a).get(b, 0.0)
+    print("P('the cat sat on the mat' | bigram) =", round(p, 4))
