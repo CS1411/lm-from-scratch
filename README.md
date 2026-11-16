@@ -10,4 +10,4 @@
 - [x] Lesson 6
 - [x] Lesson 7
 - [ ] Completion test
-- [ ] Project
+- [x] Project
