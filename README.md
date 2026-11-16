@@ -9,5 +9,5 @@
 - [x] Lesson 5
 - [x] Lesson 6
 - [x] Lesson 7
-- [ ] Completion test
+- [x] Completion test
 - [x] Project
