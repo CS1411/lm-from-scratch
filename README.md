@@ -8,6 +8,6 @@
 - [x] Lesson 4
 - [x] Lesson 5
 - [x] Lesson 6
-- [ ] Lesson 7
+- [x] Lesson 7
 - [ ] Completion test
 - [ ] Project
